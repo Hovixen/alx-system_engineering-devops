@@ -1,0 +1,1 @@
+This repository is the first for shell basics
