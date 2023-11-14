@@ -45,3 +45,7 @@ sftp> get <name_of_file> or <name_of_dir>
 ```
 sftp> put <name_of_file> or <name_of_dir>
 ```
+
+### Notes :note_pad:
+
+* Before performing any uploading or downloading activity, ensure to take note of the current working directory of your local machine by using the command `lpwd` as well as the current working directory of the remote server by using the command `pwd`
