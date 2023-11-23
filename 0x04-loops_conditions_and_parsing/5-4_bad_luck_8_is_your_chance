@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# script loops from 1-10 using while loop
+#+ prints bad luck on 4th and good luck on 8th iteration
+#+ prints Best School for the rest
+
+count=0
+while [ $count -lt 10 ]
+do
+	if [ $count -eq 3 ]
+	then
+		echo "bad luck"
+	elif [ $count -eq 7 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+((count++))
+done
