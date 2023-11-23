@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # script displays 'Best School' 10 times using while loop
 
 count=0
