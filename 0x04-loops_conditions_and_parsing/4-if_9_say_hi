@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# script that displays Best School 10 times
+#+ but for the 9th iteration, displays Best School and then Hi on a new line
+
+count=0
+call='Best School'
+
+while (( count <= 10 )); do
+	if [ $count -eq 9 ]; then
+		echo "$call"
+		echo "Hi"
+	else
+		echo "$call"
+	fi
+	count=$((count + 1))
+done
