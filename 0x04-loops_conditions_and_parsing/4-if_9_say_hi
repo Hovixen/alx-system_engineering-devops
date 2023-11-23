@@ -7,7 +7,6 @@ call='Best School'
 
 while (( count <= 10 )); do
 	if [ $count -eq 9 ]; then
-		echo "$call"
 		echo "Hi"
 	else
 		echo "$call"
