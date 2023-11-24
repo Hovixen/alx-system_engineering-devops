@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script displays bash PID
+pid=$$
+echo "$pid"
