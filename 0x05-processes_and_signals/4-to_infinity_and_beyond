@@ -2,8 +2,7 @@
 # script displays 'to inifinity and beyond' indefinitely
 
 call="To inifinity and beyond"
-count=0
-while [ $count -eq 0 ]
+while :
 do
 	echo "$call"
 	sleep 2
