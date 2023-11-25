@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# script displays 'to inifinity and beyond' indefinitely
+
+call="To inifinity and beyond"
+count=0
+while [ $count -eq 0 ]
+do
+	echo "$call"
+	sleep 2
+done
