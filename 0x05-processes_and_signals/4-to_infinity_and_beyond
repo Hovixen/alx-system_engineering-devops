@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # script displays 'to inifinity and beyond' indefinitely
 
-call="To inifinity and beyond"
 while :
 do
-	echo "$call"
+	echo "To inifinity and beyond"
 	sleep 2
 done
