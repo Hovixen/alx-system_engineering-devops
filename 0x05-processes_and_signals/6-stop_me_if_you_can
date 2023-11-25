@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# script stops 4-to_infinity_and_beyond process
+
+
+if pkill -f "4-to_infinity_and_beyond"
+then
+	echo "Terminated"
+else
+	echo "process not found"
+fi
