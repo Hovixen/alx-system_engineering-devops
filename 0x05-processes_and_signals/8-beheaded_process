@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 #Bash script that kills a process
 
-pkill -f "7-highlander"
+process=$(pgrep -f "7-highlander")
+
+if [ -n $process ]
+then
+	kill -9 "$process"
+else
+	echo "$process not found"
+fi
