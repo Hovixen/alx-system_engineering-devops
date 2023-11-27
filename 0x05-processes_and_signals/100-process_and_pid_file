@@ -1,11 +1,40 @@
 #!/usr/bin/env bash
 #Bash script that displays messages when read some signals
-echo $$ > /var/run/holbertonscript.pid
-trap 'echo "I hate the kill command"; rm -rf /var/run/holbertonscript.pid; exit' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm -rf /var/run/holbertonscript.pid; exit' SIGQUIT
-while :
-do
-    echo "To infinity and beyond"
-    sleep 2
-done
+
+function delete_and_exit()
+{
+	rm -rf /var/run/myscript.pid
+	exit 0
+}
+
+function signal_termination()
+{
+	echo "I hate the kill command"
+	delete_and_exit
+}
+
+function signal_interrupt
+{
+	echo "Y U no love me?!"
+}
+
+function quit()
+{
+	delete_and_exit
+}
+
+function message()
+{
+	while :
+	do
+		echo "To infinity and beyond"
+		sleep 2
+	done
+}
+
+trap signal_termination SIGTERM
+trap signal_interrupt SIGINT
+trap signal_quit SIGQUIT
+
+echo $$ > /var/run/myscript.pid
+message
