@@ -1,8 +1,19 @@
 #!/usr/bin/env bash
 #Bash script that displays a message when it is terminated
-trap 'echo "I am invincible!!!"' SIGTERM
-while :
-do
-	echo "To infinity and beyond"
-	sleep 2
-done
+
+function message()
+{
+	while :
+	do
+		echo "To infinity and beyond"
+		sleep 2
+	done
+}
+
+function signal_termination()
+{
+	echo "I am invincible!!!"
+}
+
+trap signal_termination SIGTERM
+message
