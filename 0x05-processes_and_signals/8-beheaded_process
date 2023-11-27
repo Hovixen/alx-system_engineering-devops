@@ -3,7 +3,7 @@
 
 process=$(pgrep -f "7-highlander")
 
-if [ -n $process ]
+if [ -n "$process" ]
 then
 	kill -9 "$process"
 else
