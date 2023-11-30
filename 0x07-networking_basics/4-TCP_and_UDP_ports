@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Script That displays listining ports as well as their PIDs
+netstat -lp
