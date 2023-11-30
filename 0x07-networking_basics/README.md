@@ -1,6 +1,8 @@
 # Networking basics
 
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQvRnBs_j2xtsNS38Z8cUBCfaNMh2xItI7m5PE0OwCjw&s)
+
+
 This Project was done while learning **Full Stack Software Engineering** at **ALX_SE** .It aims to learn about what is an OSI model, LAN, WAN, IP address, localhost, subnet and TCP/UDP.
 
 ## Technologies
