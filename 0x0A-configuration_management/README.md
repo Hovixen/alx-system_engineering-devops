@@ -1,7 +1,7 @@
 # Configuration management
 This Project was completed during **Full Stack Software Engineering studies** at **ALX_SE**. It aims to learn about server configuration management using **Puppet**.
 
-![](https://community-cdn-digitalocean-com.global.ssl.fastly.net/Kskg37qnPTwy2USC5b8721io)
+![](./image/images.png)
 
 
 ## Technologies
