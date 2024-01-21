@@ -2,4 +2,4 @@
 # Script uses ssh to connect to server using private key
 
 private_key=~/.ssh/school
-ssh -i "$private_key" ubuntu@54.90.6.116
+ssh -i "$private_key" ubuntu@8.8.8.8
