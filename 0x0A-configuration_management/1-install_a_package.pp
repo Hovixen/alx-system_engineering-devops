@@ -5,13 +5,13 @@ package { 'python3-pip':
 }
 
 package { 'flask':
-  ensure   => '2.1.0',
+  ensure   => '2.0.1',
   provider => 'pip3',
   require  => Package['python3-pip'],
 }
 
 package { 'werkzeug':
-  ensure   =>  '2.1.1',
+  ensure   =>  '0.16.1',
   provider => 'pip3',
   require  => Package['python3-pip'],
 }
