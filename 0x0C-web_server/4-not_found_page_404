@@ -12,14 +12,14 @@ ERR_MSG="Ceci n'est pas une page"
 echo "server {
 	listen 80;
 	server_name _;
-	location /redirect_me {
+	location = /redirect_me {
 		return 301 $REDIRECT;
 	}
 
 	error_page 404 /404_error;
 	location = /404_error {
 		internal;
-		return 404 '$ERR_MSG';
+		return 404 \"$ERR_MSG\n\";
 	}
 }" > /etc/nginx/sites-available/default
 service nginx restart
