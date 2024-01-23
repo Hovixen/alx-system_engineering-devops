@@ -1,25 +1,26 @@
 #!/usr/bin/env bash
-# Script configures Nginx server so that /redirect_me is redirecting to another page
+# sets up a new 404 error page
+sudo apt-get update
+sudo apt-get install -y nginx 
+echo "Hello World!" > index.html
+sudo mv index.html /var/www/html
 
-apt-get -y update
-apt-get -y install nginx
 
-bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-REDIRECT="https://github.com/Hovixen/"
-
-ERR_MSG="Ceci n'est pas une page"
-
+echo "Ceci n'est pas une page" > 404.html
+sudo mv 404.html /var/www/html
 echo "server {
-	listen 80;
-	server_name _;
-	location /redirect_me {
-		return 301 $REDIRECT;
-	}
-
-	error_page 404 /404_error;
-	location = /404_error {
-		internal;
-		return 404 '$ERR_MSG';
-	}
-}" > /etc/nginx/sites-available/default
-service nginx restart
+   listen 80 default_server;
+   listen [::]:80 default_server;
+   
+   root /var/www/html;
+   index index.html;
+   location /redirect_me {
+      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+   }
+   error_page 404 /404.html;
+   location = /404.html{
+      internal;
+   }
+}" > default
+sudo mv -f default /etc/nginx/sites-available/default
+sudo service nginx restart
