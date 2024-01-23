@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Script transfers a file from client to server
+
+if [ "$#" -lt 3 ];
+then
+	echo "Usage: $0 ARG1 ARG2 ARG3 [ARG4]"
+fi
+
+PATH_TO_FILE="$1"
+IP="$2"
+USERNAME="$3"
+PATH_TO_SSH_KEY="$4"
+
+scp -o StrictHostkeyChecking=no "$PATH_TO_FILE" "$USERNAME"@"$IP" -i "$PATH_TO_SSH_KEY"
