@@ -1,19 +1,7 @@
 #!/usr/bin/env bash
 # Script configures Nginx server so that /redirect_me is redirecting to another page
-
 apt-get -y update
 apt-get -y install nginx
-
-bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-REDIRECT="https://github.com/Hovixen/"
-
-sed "s|{{REDIRECT}}|$REDIRECT|g" > /etc/nginx/sites-available/default << 'EOF'
-server {
-	listen 80;
-	server_name _;
-	location / {
-	return 301 $REDIRECT;
-	}
-}
-EOF
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/luischaparroc permanent;/" /etc/nginx/sites-available/default
 service nginx start
