@@ -12,4 +12,4 @@ IP="$2"
 USERNAME="$3"
 PATH_TO_SSH_KEY="$4"
 
-scp -o StrictHostKeyChecking=no "$PATH_TO_FILE" "$USERNAME@$IP:~/" -i "$PATH_TO_SSH_KEY"
+scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME"@"$IP":~/
