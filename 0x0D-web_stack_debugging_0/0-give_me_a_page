@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script to debug an apache server
+
+service apache2 start
