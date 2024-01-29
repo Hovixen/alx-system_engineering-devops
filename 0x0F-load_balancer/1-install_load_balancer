@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Script install HAproxy and configures it
+
+apt-get -y update
+apt-get install -y --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.8
+apt-get install -y haproxy=2.8.\*
+
+
+cp -a /etc/haproxy/haproxy.cfg{,.original_copy}
+
+HA_CONFIG="
+
+        listen load_balancer
+                bind *:80
+                mode http
+                option httpclose
+                option forwardfor
+        frontend my_frontend
+                default_backend my_backend
+
+        backend my_backend
+                balance roundrobin
+                mode http
+                server 470173-web-01 100.24.244.104:80 check
+                server 470173-web-02 3.89.155.116:80 check
+        "
+echo "$HA_CONFIG" > /etc/haproxy/haproxy.cfg
+
+echo "ENABLED=1" > /etc/default/haproxy
+service haproxy restart
