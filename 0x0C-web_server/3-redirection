@@ -10,9 +10,9 @@ REDIRECT="https://github.com/Hovixen/"
 CONFIG="server {
         listen 80;
         server_name _;
+	root /var/www/html;
+	index index.nginx-debian.html;
 
-        location / {
-        return 200 'Hello World!\\n';
         }
         location = /redirect_me {
         return 301 $REDIRECT;
