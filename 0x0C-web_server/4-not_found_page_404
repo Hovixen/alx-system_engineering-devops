@@ -9,18 +9,21 @@ REDIRECT="https://github.com/Hovixen/"
 
 ERR_MSG="Ceci n'est pas une page"
 
-echo "server {
-	listen 80;
-	server_name _;
+CONFIG="server {
+        listen 80;
+        server_name _;
+        root /var/www/html;
+        index index.nginx-debian.html;
 
-	location = /redirect_me {
-		return 301 $REDIRECT;
-	}
+        location = /redirect_me {
+                return 301 $REDIRECT;
+        }
 
-	error_page 404 /404_error;
-	location = /404_error {
-		internal;
-		return 404 \"$ERR_MSG\n\";
-	}
-}" > /etc/nginx/sites-available/default
+        error_page 404 /404_error;
+        location = /404_error {
+                internal;
+                return 404 \"$ERR_MSG\n\";
+        }
+}"
+echo "$CONFIG" > /etc/nginx/sites-available/default
 service nginx restart
