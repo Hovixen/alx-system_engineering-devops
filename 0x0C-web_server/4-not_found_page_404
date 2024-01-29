@@ -12,6 +12,7 @@ ERR_MSG="Ceci n'est pas une page"
 echo "server {
 	listen 80;
 	server_name _;
+
 	location = /redirect_me {
 		return 301 $REDIRECT;
 	}
