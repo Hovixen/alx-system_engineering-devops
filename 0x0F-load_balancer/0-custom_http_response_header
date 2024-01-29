@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Script Configure Nginx so that its HTTP response contains a custom header
+
+apt-get -y update
+apt-get -y install nginx
+
+bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+REDIRECT="https://github.com/Hovixen/"
+
+ERR_MSG="Ceci n'est pas une page"
+
+CONFIG="server {
+        listen 80;
+        server_name _;
+        root /var/www/html;
+        index index.nginx-debian.html;
+        add_header X-Served-By $HOSTNAME;
+
+        location = /redirect_me {
+                return 301 $REDIRECT;
+        }
+
+        error_page 404 /404_error;
+        location = /404_error {
+                internal;
+                return 404 \"$ERR_MSG\n\";
+        }
+}"
+echo "$CONFIG" > /etc/nginx/sites-available/default
+service nginx restart
