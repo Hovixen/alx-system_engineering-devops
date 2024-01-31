@@ -10,13 +10,11 @@ apt-get install -y haproxy=2.8.\*
 cp -a /etc/haproxy/haproxy.cfg{,.original_copy}
 
 HA_CONFIG="
-
-        listen load_balancer
+        frontend my_frontend
                 bind *:80
                 mode http
                 option httpclose
                 option forwardfor
-        frontend my_frontend
                 default_backend my_backend
 
         backend my_backend
