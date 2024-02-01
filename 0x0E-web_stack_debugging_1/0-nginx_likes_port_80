@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
-# Script that sets the port 80
-CONFIG="
-	server {
-		listen 80;
-		server_name _;
-		root /var/www/html;
-		index index.html;
-	}"
-echo "$CONFIG" > /etc/nginx/sites-enabled/default
+# Configures an Nginx server to listen on port 80.
+
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
