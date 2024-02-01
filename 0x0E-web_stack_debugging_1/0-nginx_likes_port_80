@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
-# Script that sets the port 80
-CONFIG="
-	server {
-		listen 80;
-		server_name _;
-		
-		location / {
-		root /var/www/html;
-		index index.html;
-		}
-	}"
-echo "$CONFIG" > /etc/nginx/sites-enabled/default
+# Script that sets the port 80 with minimum number of commands
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
