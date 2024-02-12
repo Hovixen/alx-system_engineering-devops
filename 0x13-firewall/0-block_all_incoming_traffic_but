@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# Script configures ufw(uncomplicated firewall)
+
 sudo ufw enable
 sudo ufw allow 22/tcp
 sudo ufw allow 433/tcp
