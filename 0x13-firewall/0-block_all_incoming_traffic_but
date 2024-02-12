@@ -1,5 +1,3 @@
-sudo apt update
-sudo apt install ufw
 sudo apt default deny incoming
 sudo apt allow 22/tcp
 sudo apt allow 80/tcp
