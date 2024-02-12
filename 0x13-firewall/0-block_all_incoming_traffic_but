@@ -1,5 +1,5 @@
+sudo ufw enable
 sudo apt default deny incoming
 sudo apt allow 22/tcp
 sudo apt allow 80/tcp
 sudo apt allow 433/tcp
-sudo ufw enable
