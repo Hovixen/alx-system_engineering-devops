@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Script runs whoami under a user passed argument
+
+if [ "$#" -ne 1 ];
+then
+	echo "Usage: $0 <username>"
+	exit 1
+fi
+
+user=$1
+
+sudo -u "$user" whoami
