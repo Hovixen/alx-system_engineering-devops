@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Script generates Mysql dump and creates a compressed file out of it
+
+if [ "$#" -ne 1 ];
+then
+	echo "Usage: $0 <mysql password>"
+	exit 1
+fi
+
+zip_file="$(date +'%d-%m-%Y').tar.gz"
+bk_file="backup.sql"
+
+# create the mysql dump file
+
+mysqldump -u root -p"$1" --all-databases > "$bk_file"
+
+# create the compressed file
+
+tar -cvzf "$zip_file" "$bk_file"
