@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Script uses a REST API and converts data to csv
 """
+import csv
 import requests
 import sys
-import csv
 
 
 def convert_to_csv(user_id):
