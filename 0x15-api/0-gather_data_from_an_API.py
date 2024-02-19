@@ -27,7 +27,7 @@ def get_user_info(user_id):
     completed_task = len(tasks)
     progress = '{}/{}'.format(completed_task, all_task)
 
-    print('Employee {} is done with tasks ({})'.format(user_name, progress))
+    print('Employee {} is done with tasks({}):'.format(user_name, progress))
     for task in tasks:
         print('\t {}'.format(task.get('title')))
 
