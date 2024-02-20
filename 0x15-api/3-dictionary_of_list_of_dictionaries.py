@@ -1,30 +1,37 @@
-!/usr/bin/python3
-""" Script that uses JSONPlaceholder API to get information about employee """
+#!/usr/bin/python3
+"""Script uses a REST API and exports data to json file
+"""
 import json
 import requests
 import sys
 
 
-if __name__ == "__main__":
-    url = 'https://jsonplaceholder.typicode.com/'
-    user = '{}users'.format(url)
-    res = requests.get(user)
-    json_o = res.json()
-    d_task = {}
-    for user in json_o:
-        name = user.get('username')
-        userid = user.get('id')
-        todos = '{}todos?userId={}'.format(url, userid)
-        res = requests.get(todos)
-        tasks = res.json()
-        l_task = []
-        for task in tasks:
-            dict_task = {"username": name,
-                         "task": task.get('title'),
-                         "completed": task.get('completed')}
-            l_task.append(dict_task)
+def convert_to_json():
+    """function exports data to json file"""
+    api_url = "https://jsonplaceholder.typicode.com/"
+    user_url = '{}/users'.format(api_url)
+    todo_url = '{}/todos'.format(api_url)
 
-        d_task[str(userid)] = l_task
-    filename = 'todo_all_employees.json'
-    with open(filename, mode='w') as f:
-        json.dump(d_task, f)
+    usr_res = requests.get(user_url)
+    usr_data = usr_res.json()
+
+    all_data = {}
+    for user in usr_data:
+        user_id = user.get('id')
+        username = user.get('username')
+        todo = requests.get(todo_url, params={'userId': user_id})
+        todo_data = todo.json()
+
+        user_task = []
+        for todo in todo_data:
+            task_title = todo.get('title')
+            task_done = todo.get('completed')
+            user_task.append({"username": username, "task": task_title,
+                              "completed": task_done})
+            all_data[user_id] = user_task
+    with open('todo_all_employees.json', 'w') as json_s:
+        json.dump(all_data, json_s)
+
+
+if __name__ == '__main__':
+    convert_to_json()
