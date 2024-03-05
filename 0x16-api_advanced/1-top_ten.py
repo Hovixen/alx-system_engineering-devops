@@ -10,7 +10,7 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'MyBot/1.0'}
 
     response = requests.get(url, headers=headers)
-    
+
     if response.status_code == 200:
         post = response.json()
 
