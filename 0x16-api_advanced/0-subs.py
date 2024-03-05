@@ -3,7 +3,6 @@
 subscribers(not active, but total) of a given subreddit
 """
 import requests
-import sys
 
 
 def number_of_subscribers(subreddit):
@@ -16,7 +15,7 @@ def number_of_subscribers(subreddit):
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code == 200:
-        subs_info = response.json()
-        return subs_info['data']['subscribers']
+        subs_info = response.json().get("data")
+        return subs_info.get("subscribers")
     else:
         return 0
