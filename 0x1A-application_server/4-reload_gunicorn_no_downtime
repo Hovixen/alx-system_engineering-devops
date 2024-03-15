@@ -3,4 +3,4 @@
 
 # ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
 
-grep gunicorn |  kill -HUP -x "gunicorn"
+pgrep gunicorn | xargs kill -HUP 
